@@ -1,21 +1,35 @@
-image: "registry.michelada.io/michelada/dockerfiles/ci/rails:2.7"
+image: "registry.michelada.io/michelada/dockerfiles/ci/rails:2.7.1"
+
+services:
+  - postgres
+
 stages:
   - test
 
+cache:
+  paths:
+    - vendor/ruby
+
 variables:
   RAILS_ENV: "test"
+  DB_HOST: postgres
+  POSTGRES_PASSWORD: loquesea
+  POSTGRES_USER: loquesea
+
+before_script:
+  - bundle config set clean 'true'
+  - bundle config set path 'vendor'
+  - bundle install
 
 rubocop:
   stage: test
   script:
     - yarn install
-    - bundle install
     - bundle exec rubocop
 
 test:
   stage: test
   script:
     - yarn install
-    - bundle install
     - bundle exec rake db:create db:schema:load
     - bundle exec rake test
