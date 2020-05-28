@@ -29,7 +29,7 @@ module Accounts
       private
 
     def account_params
-      params.requiere(:account).permit(:email, :username, :name)
+      params.require(:account).permit(:email, :username, :name)
     end
     end
 end

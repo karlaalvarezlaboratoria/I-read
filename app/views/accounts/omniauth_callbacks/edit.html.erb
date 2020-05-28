@@ -1,0 +1,39 @@
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto"> 
+      <h2>Profile</h2>
+      
+      <%= form_tag '/sign_up_validation', method: :post do %>
+        <ul class="list-unstyled alert alert-warning" >
+          <% @account.errors.full_messages.each do |error| %>
+            <li>
+              <%= error  %>
+            </li>
+          <% end %>
+        </ul>
+
+        <div class="form-group">
+          <label class="label" for="account_username">Username </label>
+          <div class="control">
+            <%= text_field_tag 'account[username]', @account.username, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" for="account_email">Email </label>
+          <div class="control">
+            <%= text_field_tag 'account[email]', @account.email, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="label" for="account_name">Name </label>
+          <div class="control">
+            <%= text_field_tag 'account[name]', @account.name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="actions">
+          <%= submit_tag 'Complete profile', class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

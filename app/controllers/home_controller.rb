@@ -2,5 +2,8 @@
 
 # Class PublicController
 class HomeController < ApplicationController
-  def new; end
+  before_action :authenticate_account!, only: [:message]
+  def new
+    render :new
+  end
 end
