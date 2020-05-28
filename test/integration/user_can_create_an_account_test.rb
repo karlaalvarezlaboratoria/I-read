@@ -9,7 +9,7 @@ class UserCanCreateAnAccountTest < ActionDispatch::IntegrationTest
 
   test 'should create account' do
     assert_difference('Account.count') do
-      post account_registration_url, params: { account: { email: @account.email, password: 'secret', password_confirmation: 'secret' } }
+      post account_registration_url, params: { account: { email: 'otro@example.com', password: 'secret', password_confirmation: 'secret' } }
     end
 
     # assert_redirected_to users_url # (User.last)
