@@ -2,5 +2,7 @@
 
 # Class PublicController
 class PublicController < ApplicationController
-  def index; end
+  def index
+    render :index
+  end
 end

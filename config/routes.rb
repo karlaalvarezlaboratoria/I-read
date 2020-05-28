@@ -5,10 +5,10 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'accounts/omniauth_callbacks'
   }
 
-  root to: 'home#new'
-  get '/', to: 'public#index'
-
   devise_scope :account do
     post '/sign_up_validation', to: 'accounts/omniauth_callbacks#sign_up_validation'
   end
+
+  root to: 'home#new'
+  get '/', to: 'public#index'
 end
