@@ -26,10 +26,10 @@ module Accounts
       end
     end
 
-      private
+    private
 
     def account_params
       params.require(:account).permit(:email, :username, :name)
     end
-    end
+  end
 end
