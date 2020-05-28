@@ -2,8 +2,12 @@
   <div class='row'>
     <div class='col-12 pb-3 pt-3 mb-4 border-bottom' >
       <div class='float-right'>
-        <%= link_to 'Log In', new_account_session_path, class: 'btn btn-outline-primary' %>
-        <%= link_to 'Sing Up', new_account_registration_path, class: 'btn btn-outline-primary' %>
+        <% if account_signed_in? %>
+          <%= link_to 'Log Out', destroy_account_session_path, method: :delete, class: 'btn btn-outline-primary' %>
+        <% else %>
+          <%= link_to 'Log In', new_account_session_path, class: 'btn btn-outline-primary' %>
+          <%= link_to 'Sing Up', new_account_registration_path, class: 'btn btn-outline-primary' %>
+        <% end %>
       </div>
       <h1>I Read</h1>
     </div>
