@@ -2,7 +2,8 @@
 
 Rails.application.routes.draw do
   devise_for :accounts, controllers: {
-    omniauth_callbacks: 'accounts/omniauth_callbacks'
+    omniauth_callbacks: 'accounts/omniauth_callbacks',
+    sessions: 'accounts/sessions'
   }
 
   devise_scope :account do

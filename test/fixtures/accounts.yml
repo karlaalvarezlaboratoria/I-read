@@ -6,8 +6,10 @@
 #
 one:
   email: user@example.com
-  #encrypted_password: "secret"
+  encrypted_password: "secret"
 # column: value
 #
-#two: {}
+two:
+  email: other@example.com
+  encrypted_password: "secret"
 # column: value
