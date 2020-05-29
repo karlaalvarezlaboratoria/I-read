@@ -4,6 +4,14 @@
       <h2>Log in</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <% if resource.errors.any? %>
+            <ul class="list-unstyled alert alert-warning">
+              <% resource.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+           <%end%>
+          
           <div class="form-group">
             <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:'form-control' %>
