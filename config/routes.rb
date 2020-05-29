@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     post '/sign_up_validation', to: 'accounts/omniauth_callbacks#sign_up_validation'
   end
 
-  root to: 'home#new'
-  get '/', to: 'public#index'
+  root to: 'public#index'
+  get '/home', to: 'home#new'
 end
