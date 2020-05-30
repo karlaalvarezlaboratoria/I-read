@@ -12,16 +12,14 @@ class UserCanLoginTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # FALLA TEST
   test 'should login' do
     post account_session_url, params: { email: @account.email, password: 'secret' }
     assert_response :success
   end
 
-  # FALLA TEST
   test 'should fail login' do
     post account_session_url, params: { email: @account.email, password: 'wrong' }
-    # Buscar testear los errores de los datos invalidos
+    assert_match(/Invalid Email or password./, flash[:alert])
   end
 
   test 'should logout' do
