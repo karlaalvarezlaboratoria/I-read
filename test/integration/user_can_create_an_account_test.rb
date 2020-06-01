@@ -29,7 +29,7 @@ class UserCanCreateAnAccountTest < ActionDispatch::IntegrationTest
 
   test 'should update account' do
     sign_in @account
-    patch account_registration_url(@account), params: { account: { email: @account.email, password: 'otro', password_confirmation: 'otro' } }
+    patch account_registration_url(id: @account), params: { email: @account.email, password: @account.encrypted_password, username: 'actual username', name: 'New name' }
     assert_response :success
   end
 
