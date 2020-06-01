@@ -4,11 +4,10 @@
       <h2>Log in</h2>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <% if resource.errors.any? %>
+    
+          <% if flash[:alert] %>
             <ul class="list-unstyled alert alert-warning">
-              <% resource.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
+                <li><%= flash[:alert] %></li> 
             </ul>
            <%end%>
           

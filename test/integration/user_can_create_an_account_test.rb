@@ -6,7 +6,6 @@ class UserCanCreateAnAccountTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
   def setup
     @account = accounts(:one)
-    # request.env['devise.mapping'] = Devise.mappings[:accounts]
   end
 
   test 'should get new' do
@@ -19,29 +18,25 @@ class UserCanCreateAnAccountTest < ActionDispatch::IntegrationTest
       post account_registration_url, params: { account: { email: 'otro@example.com', password: 'secret', password_confirmation: 'secret' } }
     end
 
-    assert_redirected_to home_url # (User.last)
+    assert_redirected_to home_url
   end
 
-  # ESTE NECESITA LOGIN PREVIO, ES NECESARIO TESTEAR???
-  # ES LO MISMO EDIT QUE UPDATE???
-  # test 'should get edit' do
-  #   get edit_account_registration_url(@account)
-  #   assert_response :success
-  # end
+  test 'should get edit' do
+    sign_in @account
+    get edit_account_registration_url(@account)
+    assert_response :success
+  end
 
-  # COMO COMPARO QUE HUBO UN UPDATE, ES DIFERENTE DEL EDIT???
-  # test 'should update account' do
-  #   patch account_registration_url(@account), params: { account: { email: @account.email, password: 'otro', password_confirmation: 'otro' } }
-  #   # A DoNDE VA A REDIRECCIONAR???
-  #   # assert_redirected_to account_url # (@user)
-  # end
+  test 'should update account' do
+    sign_in @account
+    patch account_registration_url(id: @account), params: { email: @account.email, password: @account.encrypted_password, username: 'actual username', name: 'New name' }
+    assert_response :success
+  end
 
-  # ESTE NO ESTa PASANDO SE QUEDA COMENTADO HASTA QUE TENGA PACIENCIA PARA
-  # LIDIAR CON EL DE NUEVO, MIENTRAS TRATARE DE HACER EL DEPLOY EN HEROKU
-  # test 'should destroy account' do
-  #   sign_in @account
-  #   assert_difference('Account.count', -1) do
-  #     delete account_registration_url(@account)
-  #   end
-  # end
+  test 'should destroy account' do
+    sign_in @account
+    assert_difference('Account.count', -1) do
+      delete account_registration_url(id: @account)
+    end
+  end
 end
