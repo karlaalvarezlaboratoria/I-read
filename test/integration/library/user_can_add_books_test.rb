@@ -55,14 +55,14 @@ class Library::UserCanAddBooksTest < ActionDispatch::IntegrationTest
 
   test 'user can update book' do
     new_name = Faker::Book.title
-    # assert_changes(@book.reload.title) do
-    patch library_book_path(@book),
-          params: {
-            book: {
-              title: new_name
+    assert_changes '@book.reload.title' do
+      patch library_book_path(@book),
+            params: {
+              book: {
+                title: new_name
+              }
             }
-          }
-    # end
+    end
     follow_redirect!
     assert_select 'h5', { text: /#{new_name}/ }
   end
