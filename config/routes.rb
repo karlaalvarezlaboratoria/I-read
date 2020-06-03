@@ -12,4 +12,9 @@ Rails.application.routes.draw do
 
   root to: 'public#index'
   get '/home', to: 'home#new'
+
+  namespace :library do
+    root to: 'books#index'
+    resources :books
+  end
 end

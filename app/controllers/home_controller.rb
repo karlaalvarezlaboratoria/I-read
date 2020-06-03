@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-# Class PublicController
-#
 class HomeController < ApplicationController
-  before_action :authenticate_account! # , only: [:new]
+  before_action :authenticate_account!
   def new
     render :new
   end

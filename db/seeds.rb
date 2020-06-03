@@ -7,11 +7,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# TEST_PASSWORD = 'qwe123qwe'
+TEST_PASSWORD = 'qwe123qwe'
 
-# account = account.account_users.create!(
-#   email: 'user@test.com',
-#   # name: Faker::Name.name,
-#   password: TEST_PASSWORD
-#   # role: :owner
-# )
+account = account.create!(
+    email: 'user@test.com',
+    name: 'Karli <3',
+    password: TEST_PASSWORD
+  )

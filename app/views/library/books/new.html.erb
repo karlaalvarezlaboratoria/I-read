@@ -1,0 +1,64 @@
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto"> 
+      <h2>Add Book</h2>
+
+      <%= form_for [:library, @book] do |f| %>
+        <% if @book.errors.any? %>
+          <div id="error_explanation">
+            <ul class="list-unstyled alert alert-warning">
+              <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class='form-group'>
+           <%= f.label :title %>
+           <%= f.text_field :title, class:'form-control' %>
+         </div>
+         <div class='form-group'>
+           <%= f.label :author %>
+           <%= f.text_field :author, class:'form-control' %>
+         </div>
+         <div class="form-group">
+           <%= f.label :genre %>
+           <%= select_tag :genre, options_for_select(Book.genres), class:'form-control' %>
+         </div>   
+         <div class='form-group'>
+           <%= f.label :publisher %>
+           <%= f.text_field :publisher, class:'form-control' %>
+         </div>
+         <div class='form-group'>
+           <%= f.label :release_year %>
+           <%= f.text_field :release_year, class:'form-control' %>
+         </div>
+         <div class='form-group'>
+           <%= f.label :description %>
+           <%= f.text_area :description, class:'form-control' %>
+         </div>
+         <div class="form-group">
+           <%= f.label :format_type %>
+           <%= select_tag :format_type, options_for_select(Book.format_types), class:'form-control' %>
+         </div>
+         <div class='form-group'>
+           <%= f.label :length %>
+           <%= f.text_field :length, class:'form-control' %>
+         </div>
+         <div class="form-group">
+           <%= f.label :length_type %>
+           <%= select_tag :length_type, options_for_select(Book.length_types), class:'form-control' %>
+         </div>
+         <div class='form-group'>
+           <%= f.label :isbn %>
+           <%= f.text_field :isbn, class:'form-control' %>
+         </div>
+         <div class='actions'>
+           <%= f.submit 'Add book', class:"btn btn-primary"%>
+         </div>
+         
+      <% end %>
+    </div>
+  </div>
+</div>

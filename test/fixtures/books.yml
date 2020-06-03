@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  author: MyString
+  genre: 1
+  publisher: MyString
+  release_year: MyString
+  description: MyText
+  format_type: 1
+  length: MyString
+  length_type: 1
+  isbn: MyString
+
+two:
+  title: MyString
+  author: MyString
+  genre: 1
+  publisher: MyString
+  release_year: MyString
+  description: MyText
+  format_type: 1
+  length: MyString
+  length_type: 1
+  isbn: MyString
