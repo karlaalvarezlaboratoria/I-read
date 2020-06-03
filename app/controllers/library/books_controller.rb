@@ -2,6 +2,8 @@
 
 module Library
   class BooksController < ApplicationController
+    before_action :find_book, only: %i[edit update destroy]
+
     def index
       @books = Book.all.order(:title)
     end
@@ -15,23 +17,23 @@ module Library
       @book.save
 
       respond_with :library, @book
-      # respond_to do |format|
-      #   if @book.save
-      #     format.html { redirect_to @book, notice: 'Book was successfully add.' }
-      #     format.json { render :show, status: :created, location: @book }
-      #   else
-      #     puts @book.errors.full_messages
-      #     format.html { render :new }
-      #     format.json { render json: @book.errors, status: :unprocessable_entity }
-      #   end
     end
 
     def edit; end
+
+    def update
+      @book.update(book_params)
+      respond_with :library, @book
+    end
 
     private
 
     def book_params
       params.require(:book).permit(:title, :author, :genre, :publisher, :release_year, :description, :format_type, :length, :lenght_type, :isbn)
+    end
+
+    def find_book
+      @book = Book.find(params[:id])
     end
   end
 end
