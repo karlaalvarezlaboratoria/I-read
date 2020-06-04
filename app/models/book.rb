@@ -5,12 +5,26 @@ class Book < ApplicationRecord
   include SoftDeletable
   # belongs_to :author
 
-  validates :title, presence: true
-  validates :author, presence: true
+  validates :title, :author, :description, :isbn, presence: true
+  validates :length, format: {
+    with: /(\d)|\A\z/i,
+    message: 'must be a number'
+  }
+  validates :description, length: { minimum: 20 }
 
-  enum genre: %w[Action\ and\ adventure Art Autobiography]
+  validates :isbn, format: {
+    with: /\d{3}-\d{3}-\d{4}-\d{2}-\d{1}/i,
+    message: 'use this format 000-000-0000-00-0.'
+  },
+                   uniqueness: true
+
+  validates :release_year, format: {
+    with: /(\A[12]\d{3})|\A\z/i,
+    message: 'add a valid year'
+  }
   enum format_type: %w[Printed Audiobook PDF]
   enum length_type: %w[pages minutes percentage]
+  enum genre: %w[Action\ and\ adventure Art Autobiography]
 
   # Alternate history
 
