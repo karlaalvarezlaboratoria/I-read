@@ -54,6 +54,11 @@
            <%= f.label :isbn %>
            <%= f.text_field :isbn, class:'form-control' %>
          </div>
+         <div class="custom-file mb-4">
+           <%= f.label :image, class:"custom-file-label" %>
+           <%= f.file_field :image, class:"custom-file-input" %>
+         </div>
+
          <div class='actions'>
            <%= f.submit 'Edit book', class:"btn btn-primary"%>
            <%= link_to 'Cancel', library_books_path, class:"btn btn-primary ml-4" %>

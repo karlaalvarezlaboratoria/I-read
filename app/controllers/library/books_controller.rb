@@ -29,7 +29,7 @@ module Library
     private
 
     def book_params
-      params.require(:book).permit(:title, :author, :genre, :publisher, :release_year, :description, :format_type, :length, :lenght_type, :isbn)
+      params.require(:book).permit(:title, :author, :genre, :publisher, :release_year, :description, :format_type, :length, :lenght_type, :isbn, :image)
     end
 
     def find_book
