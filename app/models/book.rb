@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   # belongs_to :author
 
   validates :title, :author, :description, :isbn, presence: true
+
   validates :length, format: {
     with: /(\d)|\A\z/i,
     message: 'must be a number'
@@ -24,21 +25,7 @@ class Book < ApplicationRecord
   }
   enum format_type: %w[Printed Audiobook PDF]
   enum length_type: %w[pages minutes percentage]
-  enum genre: %w[Action\ and\ adventure Art Autobiography]
-
-  # Alternate history
-
-  # Anthology
-
-  # Biography
-
-  # Chick lit
-
-  # Book review
-
-  # Children's
-
-  # Cookbook
+  enum genre: %w[Action\ and\ adventure Art Autobiography Alternate\ history Anthology Biography Chick\ lit Book\ review Children's Cookbook]
 
   # Comic book
 

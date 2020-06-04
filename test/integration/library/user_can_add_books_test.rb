@@ -3,11 +3,11 @@
 require 'test_helper'
 
 class Library::UserCanAddBooksTest < ActionDispatch::IntegrationTest
-  # include Devise::Test::IntegrationHelpers
+  include Devise::Test::IntegrationHelpers
 
   def setup
-    #   @account = accounts(:one)
-    #   sign_in @account
+    @account = accounts(:one)
+    sign_in @account
     @book = books(:one)
   end
 
@@ -35,7 +35,7 @@ class Library::UserCanAddBooksTest < ActionDispatch::IntegrationTest
                format_type: 'Printed',
                length: '25',
                length_type: 'pages',
-               isbn: ''
+               isbn: '000-000-0000-00-1'
              }
            }
     end
@@ -50,7 +50,6 @@ class Library::UserCanAddBooksTest < ActionDispatch::IntegrationTest
   test 'should get edit' do
     get edit_library_book_path(@book)
     assert_response :success
-    # assert_select 'h5', { text: /MyString/ }
   end
 
   test 'user can update book' do

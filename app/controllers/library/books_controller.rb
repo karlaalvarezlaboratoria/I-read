@@ -2,6 +2,7 @@
 
 module Library
   class BooksController < ApplicationController
+    before_action :authenticate_account!
     before_action :find_book, only: %i[edit update destroy]
 
     def index
