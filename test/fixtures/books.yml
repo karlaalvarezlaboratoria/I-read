@@ -6,11 +6,11 @@ one:
   genre: 1
   publisher: MyString
   release_year: "2000"
-  description: <%= Faker::Lorem.paragraph %>
+  description: Esto debe tener más de veinte carácteres para pasar... Esto es lo que falla?
   format_type: 1
   length: "200"
   length_type: 1
-  isbn: 000-000-1000-2
+  isbn: 000-000-1000-00-2
 
 two:
   title: MyString
@@ -22,4 +22,4 @@ two:
   format_type: 1
   length: "200"
   length_type: 1
-  isbn: 000-000-3000-3
+  isbn: 000-000-3000-00-3
