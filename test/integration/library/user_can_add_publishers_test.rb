@@ -32,8 +32,10 @@ class Library::UserCanAddPublishersTest < ActionDispatch::IntegrationTest
            }
     end
 
-    # created_publisher = assigns(:publisher)
+    created_publisher = assigns(:publisher)
     follow_redirect!
+    assert_select 'td', { text: /#{created_publisher.name}/ }
+    assert_select 'td', { text: /#{created_publisher.country}/ }
   end
 
   test 'should get edit' do
@@ -42,16 +44,16 @@ class Library::UserCanAddPublishersTest < ActionDispatch::IntegrationTest
   end
 
   test 'user can update publisher' do
-    # new_name = Faker::Book.title
+    new_name = Faker::Book.unique.publisher
     assert_changes '@publisher.reload.name' do
       patch library_publisher_path(@publisher),
             params: {
               publisher: {
-                name: Faker::Book.unique.publisher
+                name: new_name
               }
             }
     end
     follow_redirect!
-    # assert_select 'h5', { text: /#{new_name}/ }
+    assert_select 'td', { text: /#{new_name}/ }
   end
 end
