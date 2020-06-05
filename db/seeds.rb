@@ -31,7 +31,7 @@ Book.create!(
 )
 
 Book.create!(
-title: "Harry Potter and the Philosopher's Stone",
+title: "Harry Potter and the Chamber of secrets",
 author: "J. K. Rowling",
 genre: 1,
 publisher:  "Bloomsbury Publishing",
@@ -44,7 +44,7 @@ isbn: "9788478884957"
 )
 
 Book.create!(
-  title: "Harry Potter and the Philosopher's Stone",
+  title: "Harry Potter and the Prisoner of Azkaban",
   author: "J. K. Rowling",
   genre: 1,
   publisher:  "Bloomsbury Publishing",
