@@ -3,11 +3,11 @@
 one:
   name: MyString
   country: MyString
-  born: MyString
-  died: MyString
+  born: "1999"
+  died: "1999"
 
 two:
   name: MyString
   country: MyString
-  born: MyString
-  died: MyString
+  born: "1999"
+  died: "1999"

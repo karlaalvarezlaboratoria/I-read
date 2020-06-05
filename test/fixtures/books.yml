@@ -10,7 +10,7 @@ one:
   format_type: 1
   length: "200"
   length_type: 1
-  isbn: 000-000-0000-2
+  isbn: 000-000-1000-2
 
 two:
   title: MyString
@@ -22,4 +22,4 @@ two:
   format_type: 1
   length: "200"
   length_type: 1
-  isbn: 000-000-0000-3
+  isbn: 000-000-3000-3
