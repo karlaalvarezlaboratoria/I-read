@@ -14,8 +14,8 @@ class Book < ApplicationRecord
   validates :description, length: { minimum: 20 }
 
   validates :isbn, format: {
-    with: /\d{3}-\d{3}-\d{4}-\d{2}-\d{1}/i,
-    message: 'use this format 000-000-0000-00-0.'
+    with: /\d{13}/i,
+    message: 'use this format 0000000000000.'
   },
                    uniqueness: true
 

@@ -35,7 +35,7 @@ class Library::UserCanAddBooksTest < ActionDispatch::IntegrationTest
                format_type: 'Printed',
                length: '25',
                length_type: 'pages',
-               isbn: '000-000-0000-00-1'
+               isbn: '0000000000001'
              }
            }
     end
