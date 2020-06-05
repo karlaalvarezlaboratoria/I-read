@@ -1,0 +1,31 @@
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto"> 
+      <h2>Add Publisher</h2>
+
+      <%= form_for [:library, @publisher] do |f| %>
+        <% if @publisher.errors.any? %>
+          <div id="error_explanation">
+            <ul class="list-unstyled alert alert-warning">
+              <% @publisher.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class='form-group'>
+          <%= f.label :name %>
+          <%= f.text_field :name, class:'form-control' %>
+        </div>
+        <div class='form-group'>
+          <%= f.label :country %>
+          <%= f.text_field :country, class:'form-control' %>
+        </div>
+        <div class='actions'>
+          <%= f.submit 'Add author', class:"btn btn-primary"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_215633) do
+ActiveRecord::Schema.define(version: 2020_06_04_193002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,18 @@ ActiveRecord::Schema.define(version: 2020_06_03_215633) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.string "country"
+    t.string "born"
+    t.string "died"
+    t.string "books", default: [], array: true
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deleted_at"], name: "index_authors_on_deleted_at"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
     t.string "author", null: false
@@ -48,6 +60,16 @@ ActiveRecord::Schema.define(version: 2020_06_03_215633) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
     t.index ["deleted_at"], name: "index_books_on_deleted_at"
+  end
+
+  create_table "publishers", force: :cascade do |t|
+    t.string "name"
+    t.string "country"
+    t.string "books", default: [], array: true
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["deleted_at"], name: "index_publishers_on_deleted_at"
   end
 
 end
