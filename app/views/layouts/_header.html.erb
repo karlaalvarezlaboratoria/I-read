@@ -20,10 +20,11 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to 'Library', library_books_path, class:"dropdown-item" %>
-          <%= link_to 'Add Book', new_library_book_path, class:"dropdown-item" %>
           <%= link_to 'Authors', library_authors_path, class:"dropdown-item" %>
-          <%= link_to 'Add Author', new_library_author_path, class:"dropdown-item" %>
           <%= link_to 'Publisher', library_publishers_path, class:"dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to 'Add Book', new_library_book_path, class:"dropdown-item" %>
+          <%= link_to 'Add Author', new_library_author_path, class:"dropdown-item" %>
           <%= link_to 'Add Publisher', new_library_publisher_path, class:"dropdown-item" %>
         </div>
       </div>

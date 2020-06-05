@@ -1,7 +1,6 @@
-<div class='container'>
   <div class='row'>
     <div class="mx-auto"> 
-      <h2>Add Author</h2>
+      <h2>Edit Author</h2>
 
       <%= form_for [:library, @author] do |f| %>
         <% if @author.errors.any? %>
@@ -35,10 +34,11 @@
           <%= f.text_area :books, class:'form-control' %>
         </div>
         <div class='actions'>
-          <%= f.submit 'Add author', class:"btn btn-primary"%>
+          <%= f.submit 'Edit author', class:"btn btn-primary"%>
           <%= link_to 'Cancel', library_authors_path, class:"btn btn-primary ml-4" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+   

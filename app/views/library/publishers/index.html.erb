@@ -1,23 +1,26 @@
 <div class='container'>
   <div class='row'>
-   
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Country</th>
-      <th scope="col">Books</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @publishers.each do |publisher| %>
-    <tr>
-      <td><%= publisher.name %></td>
-      <td><%= publisher.country %></td>
-      <td><%= publisher.books %></td>
-    </tr>
-  <% end %>  
-  </tbody>
-</table>
-</div>
+    <h1 class='mb-5 mx-auto'>Publishers</h1>
+
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Country</th>
+          <th scope="col">Books</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @publishers.each do |publisher| %>
+          <tr>
+            <td><%= publisher.name %></td>
+            <td><%= publisher.country %></td>
+            <td><%= publisher.books %></td>
+            <td><%= link_to "Edit", edit_library_publisher_path(publisher)%></td>
+          </tr>
+        <% end %>  
+      </tbody>
+    </table>
+  </div>
 </div>
