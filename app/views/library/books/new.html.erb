@@ -54,10 +54,13 @@
            <%= f.label :isbn %>
            <%= f.text_field :isbn, class:'form-control' %>
          </div>
+          
          <div class="custom-file mb-4">
-           <%= f.label :image, class:"custom-file-label" %>
-           <%= f.file_field :image, class:"custom-file-input" %>
+           <%= f.label :image, id:"custom-file-label", class:"custom-file-label", for:"inputGroupFile02" %>
+           <%= f.file_field :image, class:"custom-file-input", id:"inputGroupFile02" %>
          </div>
+        
+
          <div class='actions'>
            <%= f.submit 'Add book', class:"btn btn-primary"%>
          </div>
@@ -66,3 +69,4 @@
     </div>
   </div>
 </div>
+

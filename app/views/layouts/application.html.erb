@@ -14,4 +14,11 @@
     <%= yield %>
     <%= render partial: 'layouts/footer'%>
   </body>
+  <script type="application/javascript">
+          document.querySelector('.custom-file-input').addEventListener('change',function(e){
+          var fileName = document.getElementById("inputGroupFile02").files[0].name;
+          var nextSibling = document.getElementById("custom-file-label") 
+          nextSibling.innerText = fileName
+          })
+        </script>
 </html>
