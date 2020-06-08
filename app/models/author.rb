@@ -6,4 +6,5 @@ class Author < ApplicationRecord
     with: /(\A[12]\d{3})|\A\z/i,
     message: 'add a valid year'
   }
+  has_and_belongs_to_many :books
 end

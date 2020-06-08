@@ -27,6 +27,10 @@ class Book < ApplicationRecord
   enum length_type: %w[pages minutes percentage]
   enum genre: %w[Action\ and\ adventure Art Autobiography Alternate\ history Anthology Biography Chick\ lit Book\ review Children's Cookbook]
 
+  has_and_belongs_to_many :authors
+
+  # belongs_to :publisher
+  # has_many :authors
   # Comic book
 
   # Diary
