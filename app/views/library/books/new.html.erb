@@ -20,7 +20,7 @@
          </div>
          <div class='form-group'>
            <%= f.label :author %>
-           <%= f.text_field :author, class:'form-control' %>
+           <%= f.select :author_ids, Author.all.pluck(:name, :id), {}, multiple:true, class:'form-control'%>  
          </div>
          <div class="form-group">
            <%= f.label :genre %>
@@ -28,7 +28,7 @@
          </div>   
          <div class='form-group'>
            <%= f.label :publisher %>
-           <%= f.text_field :publisher, class:'form-control' %>
+           <%= select_tag :publisher, options_for_select(Publisher.all.pluck :name), class:'form-control' %>
          </div>
          <div class='form-group'>
            <%= f.label :release_year %>
@@ -59,8 +59,7 @@
            <%= f.label :image, id:"custom-file-label", class:"custom-file-label", for:"inputGroupFile02" %>
            <%= f.file_field :image, class:"custom-file-input", id:"inputGroupFile02" %>
          </div>
-        
-
+      
          <div class='actions'>
            <%= f.submit 'Add book', class:"btn btn-primary"%>
            <%= link_to 'Cancel', library_books_path, class:"btn btn-primary ml-4" %> 

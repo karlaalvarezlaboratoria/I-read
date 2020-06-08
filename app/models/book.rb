@@ -5,7 +5,7 @@ class Book < ApplicationRecord
   include SoftDeletable
   # belongs_to :author
 
-  validates :title, :author, :description, :isbn, presence: true
+  validates :title, :description, :isbn, presence: true
 
   validates :length, format: {
     with: /(\d)|\A\z/i,

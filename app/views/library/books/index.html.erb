@@ -6,6 +6,8 @@
  </div>
 <div class="row row row-cols-1 row-cols-md-3">
 <% @books.each do |book| %>
+    
+
   <div class="col mb-4">
 
 <div class="card" style="width: 18rem;">
@@ -13,7 +15,9 @@
   <div class="card-body">
     <h5 class="card-title"><%= book.title%></h5>
     <p class="card-text"><%= book.description%>.</p>
-    <p class="card-text"><%= book.author%>.</p>
+    <% (book.authors.pluck :name).each do |name| %>
+    <p class="card-text"><%= name %>.</p>
+    <% end %>
     <%= link_to "Edit", edit_library_book_path(book), class:"btn btn-primary" %>
   </div>
 </div>
