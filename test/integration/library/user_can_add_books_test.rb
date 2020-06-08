@@ -27,9 +27,9 @@ class Library::UserCanAddBooksTest < ActionDispatch::IntegrationTest
            params: {
              book: {
                title: Faker::Book.title,
-               author_id: '1',
+               author_ids: ['1'],
                genre: 'Art',
-               publisher: Faker::Book.publisher,
+               publisher_id: '1',
                release_year: '2000',
                description: Faker::Lorem.paragraph,
                format_type: 'Printed',

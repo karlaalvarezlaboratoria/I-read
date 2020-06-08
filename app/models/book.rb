@@ -2,8 +2,11 @@
 
 class Book < ApplicationRecord
   mount_uploader :image, ImageUploader
+
   include SoftDeletable
-  # belongs_to :author
+
+  has_and_belongs_to_many :authors
+  belongs_to :publisher
 
   validates :title, :description, :isbn, presence: true
 
@@ -27,10 +30,6 @@ class Book < ApplicationRecord
   enum length_type: %w[pages minutes percentage]
   enum genre: %w[Action\ and\ adventure Art Autobiography Alternate\ history Anthology Biography Chick\ lit Book\ review Children's Cookbook]
 
-  has_and_belongs_to_many :authors
-
-  # belongs_to :publisher
-  # has_many :authors
   # Comic book
 
   # Diary

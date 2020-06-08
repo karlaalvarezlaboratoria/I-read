@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_192652) do
+ActiveRecord::Schema.define(version: 2020_06_08_222936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_06_08_192652) do
     t.string "country"
     t.string "born"
     t.string "died"
-    t.string "books", default: [], array: true
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,7 +53,6 @@ ActiveRecord::Schema.define(version: 2020_06_08_192652) do
   create_table "books", force: :cascade do |t|
     t.string "title", null: false
     t.integer "genre", default: 0
-    t.string "publisher"
     t.string "release_year"
     t.text "description"
     t.integer "format_type", default: 0
@@ -65,13 +63,14 @@ ActiveRecord::Schema.define(version: 2020_06_08_192652) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
+    t.bigint "publisher_id"
     t.index ["deleted_at"], name: "index_books_on_deleted_at"
+    t.index ["publisher_id"], name: "index_books_on_publisher_id"
   end
 
   create_table "publishers", force: :cascade do |t|
     t.string "name"
     t.string "country"
-    t.string "books", default: [], array: true
     t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

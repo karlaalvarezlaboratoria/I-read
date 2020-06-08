@@ -19,7 +19,7 @@ Account.create!(
 
 Book.create!(
   title: "Harry Potter and the Philosopher's Stone",
-  author: "J. K. Rowling",
+  author_ids: 1,
   genre: 1,
   publisher:  "Bloomsbury Publishing",
   release_year: "1997",
@@ -32,9 +32,9 @@ Book.create!(
 
 Book.create!(
 title: "Harry Potter and the Chamber of secrets",
-author: "J. K. Rowling",
+author_ids: 1,
 genre: 1,
-publisher:  "Bloomsbury Publishing",
+publisher_id: "1",
 release_year: "1999",
 description: "The summer of Harry Potter has included the worst birthday of his life, the dire warnings of a house elf named Dobby and the rescue of the Dursleys' house starring his friend Ron Weasley at the wheel of a flying magic car. Back at Hogwarts College of Witchcraft and Wizardry, where his sophomore year is about to begin, Harry hears strange whispers echoing through the empty hallways. And then the attacks begin and several students appear petrified ... Apparently, Dobby's sinister predictions are coming true ...",
 format_type: 1,
@@ -45,9 +45,9 @@ isbn: "9788478884957"
 
 Book.create!(
   title: "Harry Potter and the Prisoner of Azkaban",
-  author: "J. K. Rowling",
+  author_ids: 1,
   genre: 1,
-  publisher:  "Bloomsbury Publishing",
+  publisher_id: "1",
   release_year: "2000",
   description: "Welcome to the night bus, emergency transport for the witcher left to his own devices. Raise your wand, get on board and we'll take you wherever you want.\nWhen the night bus breaks into a dark street and brakes loudly in front of Harry, a new course at Hogwarts begins for him, full of extraordinary events. Sirius Black, assassin and follower of Lord Voldemort, has escaped, and they say he is looking for Harry. In her first Divination class, Professor Trelawney sees an omen of death in the tea leaves in Harry's cup ... But perhaps most terrifying are the dementors who patrol the school gardens, able to sip your soul with his kiss ...",
   format_type: 1,
