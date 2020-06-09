@@ -5,6 +5,7 @@ services:
 
 stages:
   - test
+  - deployment
 
 cache:
   paths:
@@ -33,3 +34,13 @@ test:
     - yarn install
     - bundle exec rake db:create db:schema:load
     - bundle exec rake test
+
+deployment:
+  stage: deployment
+  script:
+    - gem install dpl --pre
+    - dpl heroku api --api_key $HEROKU_API_KEY --app $HEROKU_APP_NAME
+    - --run CMD 'heroku run rails db:migrate'
+  only:
+    refs:
+      - master
