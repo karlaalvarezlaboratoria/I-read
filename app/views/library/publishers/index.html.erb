@@ -16,7 +16,11 @@
           <tr>
             <td><%= publisher.name %></td>
             <td><%= publisher.country %></td>
-            <td><%= publisher.books %></td>
+            <td>
+              <% (publisher.books.pluck :title).each do |title| %>
+                <p><%= title %> </p>
+              <% end %>
+            </td>
             <td><%= link_to "Edit", edit_library_publisher_path(publisher)%></td>
           </tr>
         <% end %>  

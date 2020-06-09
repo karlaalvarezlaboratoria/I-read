@@ -20,7 +20,11 @@
       <td><%= author.name %></td>
       <td><%= author.country %></td>
       <td><%= author.born %> - <%= author.died %></td>
-      <td><%= author.books %></td>
+      <td>
+        <% (author.books.pluck :title).each do |title| %>
+          <p><%= title %> </p>
+        <% end %>
+      </td>
       <td><%= link_to "Edit", edit_library_author_path(author)%></td>
 
     </tr>
