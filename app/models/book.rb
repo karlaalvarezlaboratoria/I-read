@@ -28,65 +28,12 @@ class Book < ApplicationRecord
   }
   enum format_type: %w[Printed Audiobook PDF]
   enum length_type: %w[pages minutes percentage]
-  enum genre: %w[Action\ and\ adventure Art Autobiography Alternate\ history Anthology Biography Chick\ lit Book\ review Children's Cookbook]
-
-  # Comic book
-
-  # Diary
-
-  # Coming-of-age
-
-  # Dictionary
-
-  # Crime
-
-  # Encyclopedia
-
-  # Drama
-
-  # Guide
-
-  # Fairytale
-
-  # Health
-
-  # Fantasy
-
-  # History
-
-  # Graphic novel
-
-  # Journal
-
-  # Historical fiction
-
-  # Math
-
-  # Horror
-
-  # Memoir
-
-  # Mystery
-
-  # Prayer
-
-  # Paranormal romance
-
-  # Religion, spirituality, and new age
-
-  # Picture book
-
-  # Textbook
-
-  # Poetry
-
-  # Review
-
-  # Political thriller
-
-  # Science
-
-  # Romance
-
-  # Self\ help Satire Travel Science\ fiction True\ crime Short\ story Suspense Thriller Young\ adult)
+  enum genre: %w[Action\ and\ adventure Art Autobiography Alternate\ history Anthology
+                 Biography Book\ review Chick\ lit Children\'s Cookbook Comic\ book
+                 Coming-of-age Crime Diary Dictionary Drama Encyclopedia Fairytale
+                 Fantasy Graphic\ novel Guide Health History Historical\ fiction Horror
+                 Journal Math Memoir Mystery Paranormal\ romance Picture\ book
+                 Poetry Political\ thriller Prayer Religion,\ spirituality,\ and\ new\ age
+                 Romance Review Satire Science Science\ fiction Self\ help Short\ story
+                 Suspense Textbook Thriller Travel True\ crime Young\ adult]
 end
