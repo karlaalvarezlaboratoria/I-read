@@ -1,1 +1,41 @@
 inherit_from: .rubocop_todo.yml
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  Exclude:
+    - 'db/**/*.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'log/**/*'
+    - 'config/routes.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'test/**/*.rb'
+
+# Layout/LineLength:
+#   Max: 130
+
+Lint/RaiseException:
+  Enabled: true
+
+# Layout/SpaceAroundMethodCallOperator:
+#   Enabled: true
+
+# Style/ExponentialNotation:
+#   Enabled: true
+
+Lint/StructNewOverride:
+  Enabled: true
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# class Account
-# module Account
 class Account < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
