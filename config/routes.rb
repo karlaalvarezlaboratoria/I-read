@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'bookshelves/index'
+  get 'bookshelves/new'
+  get 'bookshelves/edit'
   namespace :library do
     get 'publishers/index'
     get 'publishers/new'
@@ -18,6 +21,7 @@ Rails.application.routes.draw do
 
   devise_scope :account do
     post '/sign_up_validation', to: 'accounts/omniauth_callbacks#sign_up_validation'
+    resources :bookshelves
   end
 
   root to: 'public#index'

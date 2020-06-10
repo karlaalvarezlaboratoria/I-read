@@ -1,0 +1,36 @@
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto"> 
+      <h2>Add Bookshelf</h2>
+
+      <%= form_for [ @bookshelf ] do |f| %>
+        <% if @bookshelf.errors.any? %>
+          <div id="error_explanation">
+            <ul class="list-unstyled alert alert-warning">
+              <% @bookshelf.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class='form-group'>
+          <%= f.label :name %>
+          <%= f.text_field :name, class:'form-control' %>
+        </div>
+        <div class='form-group'>
+          <%= f.label :description %>
+          <%= f.text_area :description, class:'form-control' %>
+        </div>
+        <div class='actions'>
+          <%= f.submit 'Add bookshelf', class:"btn btn-primary"%>
+          <%= link_to 'Cancel', bookshelves_path, class:"btn btn-primary ml-4" %>
+        </div>
+        <%# <div class='form-group'> %>
+           <%# <%= f.label :books %> 
+           <%# <%= f.select :book_ids, Book.all.pluck(:title, :id), {}, class:'form-control'%>   
+         <%# </div> %>
+      <% end %>
+    </div>
+  </div>
+</div>
