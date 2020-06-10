@@ -14,7 +14,7 @@
   <tbody>
 
   <% @bookshelves.each do |bookshelf| %>
-    <% if bookshelf.account_id == current_account.id %>
+    <%# <% if bookshelf.account_id == current_account.id %> 
     <tr>
       <td><%= bookshelf.name %></td>
       <td>
@@ -25,7 +25,7 @@
       <td><%= link_to "Edit", edit_bookshelf_path(bookshelf)%></td>
 
     </tr>
-    <% end %>
+    <%# <% end %> 
   <% end %>  
   </tbody>
 </table>

@@ -16,6 +16,18 @@ Account.create!(
   password: TEST_PASSWORD
 )
 
+Author.create!(
+  name: "J. K. Rowling",
+  country: "England",
+  born: "1965",
+  died: ""
+)
+
+Publisher.create!(
+  name: "Bloomsbury Publishing",
+  country: "England"
+)
+
 
 Book.create!(
   title: "Harry Potter and the Philosopher's Stone",
@@ -56,14 +68,3 @@ Book.create!(
   isbn: "9788478885190"
 )
 
-Author.create!(
-  name: "J. K. Rowling",
-  country: "England",
-  born: "1965",
-  died: ""
-)
-
-Publisher.create!(
-  name: "Bloomsbury Publishing",
-  country: "England"
-)

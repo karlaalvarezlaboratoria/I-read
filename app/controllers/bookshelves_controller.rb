@@ -2,10 +2,14 @@
 
 class BookshelvesController < ApplicationController
   before_action :authenticate_account!
-  before_action :find_bookshelf, only: %i[edit update destroy valid_account]
+  before_action :find_bookshelf, only: %i[edit update destroy]
+
+  rescue_from 'ActiveRecord::RecordNotFound' do |exception|
+    render xml: exception, status: 404
+  end
 
   def index
-    @bookshelves = Bookshelf.all.order(:name)
+    @bookshelves = current_account.bookshelves.order(:name)
   end
 
   def new
@@ -23,8 +27,6 @@ class BookshelvesController < ApplicationController
   def edit; end
 
   def update
-    return unless valid_account?
-
     @bookshelf.update(bookshelf_params)
     respond_with @bookshelf
   end
@@ -32,14 +34,10 @@ class BookshelvesController < ApplicationController
   private
 
   def bookshelf_params
-    params.require(:bookshelf).permit(:name, :description, book_ids: [])
+    params.require(:bookshelf).permit(:name, book_ids: [])
   end
 
   def find_bookshelf
-    @bookshelf = Bookshelf.find(params[:id])
-  end
-
-  def valid_account?
-    @bookshelf.account_id == current_account.id
+    @bookshelf = current_account.bookshelves.find(params[:id])
   end
 end

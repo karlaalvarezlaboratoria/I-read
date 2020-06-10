@@ -2,10 +2,8 @@
 
 one:
   name: MyString
-  description: MyText
   account_id: 980190962
 
 two:
   name: MyString
-  description: MyText
   account_id: 980190962

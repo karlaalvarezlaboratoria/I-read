@@ -7,7 +7,7 @@
 one:
   email: user@example.com
   encrypted_password: <%= Account.new.send(:password_digest, 'secret') %>
-
+  # bookshelves: [980190962]
 # column: value
 #
 two:

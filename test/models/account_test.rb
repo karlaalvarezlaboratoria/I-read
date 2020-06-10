@@ -3,7 +3,9 @@
 require 'test_helper'
 
 class AccountTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'user have 3 bookshelves by default' do
+    assert_difference('Bookshelf.count', 3) do
+      Account.new(email: 'john@example.com', password: 'secret').save
+    end
+  end
 end

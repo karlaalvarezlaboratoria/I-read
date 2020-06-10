@@ -26,17 +26,14 @@ class UserCanAddBookshelvesTest < ActionDispatch::IntegrationTest
       post bookshelves_path,
            params: {
              bookshelf: {
-               name: Faker::Lorem.sentence,
-               description: Faker::Lorem.paragraph
+               name: Faker::Lorem.sentence
              }
            }
     end
 
-    # created_bookshelf = assigns(:bookshelf)
+    created_bookshelf = assigns(:bookshelf)
     follow_redirect!
-    # assert_select 'h5', { text: /#{created_book.title}/ }
-    # assert_select 'p', { text: /#{created_book.description}/ }
-    # assert_select 'p', { text: /#{created_book.author}/ }
+    assert_select 'td', { text: /#{created_bookshelf.name}/ }
   end
 
   test 'should get edit' do
@@ -55,18 +52,12 @@ class UserCanAddBookshelvesTest < ActionDispatch::IntegrationTest
             }
     end
     follow_redirect!
+    assert_select 'td', { text: /#{new_name}/ }
   end
 
   test 'wrong user cant update bookshelf' do
     sign_in accounts(:two)
-    new_name = Faker::Book.title
-    assert_no_changes '@bookshelf.reload.name' do
-      patch bookshelf_path(@bookshelf),
-            params: {
-              bookshelf: {
-                name: new_name
-              }
-            }
-    end
+    get edit_bookshelf_path(@bookshelf)
+    assert_response :missing
   end
 end
