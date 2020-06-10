@@ -19,10 +19,6 @@
           <%= f.text_field :name, class:'form-control' %>
         </div>
         <div class='form-group'>
-          <%= f.label :description %>
-          <%= f.text_area :description, class:'form-control' %>
-        </div>
-        <div class='form-group'>
            <%= f.label :books %> 
             <%= f.select :book_ids, Book.all.order(:title).pluck(:title, :id), {}, multiple:true, class:'form-control'%>   
          </div>

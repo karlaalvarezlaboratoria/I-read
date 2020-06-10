@@ -7,7 +7,6 @@
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Description</th>
       <th scope="col">Books</th>
       <th scope="col"></th>
     </tr>
@@ -18,7 +17,6 @@
     <% if bookshelf.account_id == current_account.id %>
     <tr>
       <td><%= bookshelf.name %></td>
-      <td><%= bookshelf.description%></td>
       <td>
         <% (bookshelf.books.pluck :title).each do |title| %>
            <p> <%= title  %> </p>

@@ -39,4 +39,14 @@ class UserCanCreateAnAccountTest < ActionDispatch::IntegrationTest
       delete account_registration_path(id: @account)
     end
   end
+
+  test 'user have 3 bookshelves by default' do
+    assert_difference('Bookshelf.count', 3) do
+      post account_registration_path, params: { account: {
+        email: 'another@example.com',
+        password: 'secret',
+        password_confirmation: 'secret'
+      } }
+    end
+  end
 end
