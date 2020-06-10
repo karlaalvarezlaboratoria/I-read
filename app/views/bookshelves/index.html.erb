@@ -14,7 +14,7 @@
       <tbody>
         <% @bookshelves.each do |bookshelf| %>
           <tr>
-            <td><%= bookshelf.name %></td>
+            <td><%= link_to bookshelf.name, bookshelf_path(bookshelf)%></td>
             <td>
               <% (bookshelf.books.pluck :title).each do |title| %>
                 <p> <%= title  %> </p>

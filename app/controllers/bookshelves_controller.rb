@@ -2,7 +2,7 @@
 
 class BookshelvesController < ApplicationController
   before_action :authenticate_account!
-  before_action :find_bookshelf, only: %i[edit update destroy]
+  before_action :find_bookshelf, only: %i[edit update destroy show]
 
   rescue_from 'ActiveRecord::RecordNotFound' do |exception|
     render html: exception, status: 404
@@ -11,6 +11,8 @@ class BookshelvesController < ApplicationController
   def index
     @bookshelves = current_account.bookshelves.order(:name)
   end
+
+  def show; end
 
   def new
     @bookshelf = Bookshelf.new
