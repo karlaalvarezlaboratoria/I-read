@@ -5,7 +5,7 @@ class BookshelvesController < ApplicationController
   before_action :find_bookshelf, only: %i[edit update destroy]
 
   rescue_from 'ActiveRecord::RecordNotFound' do |exception|
-    render xml: exception, status: 404
+    render html: exception, status: 404
   end
 
   def index
