@@ -19,11 +19,11 @@
     <tr>
       <td><%= bookshelf.name %></td>
       <td><%= bookshelf.description%></td>
-      <%# <td> %>
-        <%# <% (bookshelf.books.pluck :title).each do |title| %> 
-          <%# <p><%= title </p> %> 
-        <%# <% end %> 
-      <%# </td> %>
+      <td>
+        <% (bookshelf.books.pluck :title).each do |title| %>
+           <p> <%= title  %> </p>
+        <% end %>
+      </td> 
       <td><%= link_to "Edit", edit_bookshelf_path(bookshelf)%></td>
 
     </tr>

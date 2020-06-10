@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   include SoftDeletable
 
   has_and_belongs_to_many :authors
+  has_and_belongs_to_many :bookshelves
   belongs_to :publisher
 
   validates :title, :description, :isbn, presence: true

@@ -32,7 +32,7 @@ class BookshelvesController < ApplicationController
   private
 
   def bookshelf_params
-    params.require(:bookshelf).permit(:name, :description)
+    params.require(:bookshelf).permit(:name, :description, book_ids: [])
   end
 
   def find_bookshelf
