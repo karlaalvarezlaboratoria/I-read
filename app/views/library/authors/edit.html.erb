@@ -1,40 +1,39 @@
-  <div class='row'>
-    <div class="mx-auto"> 
-      <h2>Edit Author</h2>
+<div class='row'>
+  <div class="mx-auto"> 
+    <h2>Edit Author</h2>
 
-      <%= form_for [:library, @author] do |f| %>
-        <% if @author.errors.any? %>
-          <div id="error_explanation">
-            <ul class="list-unstyled alert alert-warning">
-              <% @author.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-        <div class='form-group'>
-          <%= f.label :name %>
-          <%= f.text_field :name, class:'form-control' %>
-        </div>
-        <div class='form-group'>
-          <%= f.label :country %>
-          <%= f.text_field :country, class:'form-control' %>
-        </div>
-        <div class='form-group'>
-          <%= f.label :born %>
-          <%= f.text_field :born, class:'form-control' %>
-        </div>
-        <div class='form-group'>
-          <%= f.label :died %>
-          <%= f.text_field :died, class:'form-control' %>
-        </div>
-        <div class='actions'>
-          <%= f.submit 'Edit author', class:"btn btn-primary"%>
-          <%= link_to 'Cancel', library_authors_path, class:"btn btn-primary ml-4" %>
+    <%= form_for [:library, @author] do |f| %>
+      <% if @author.errors.any? %>
+        <div id="error_explanation">
+          <ul class="list-unstyled alert alert-warning">
+            <% @author.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         </div>
       <% end %>
-    </div>
+
+      <div class='form-group'>
+        <%= f.label :name %>
+        <%= f.text_field :name, class:'form-control' %>
+      </div>
+      <div class='form-group'>
+        <%= f.label :country %>
+        <%= f.text_field :country, class:'form-control' %>
+      </div>
+      <div class='form-group'>
+        <%= f.label :born %>
+        <%= f.text_field :born, class:'form-control' %>
+      </div>
+      <div class='form-group'>
+        <%= f.label :died %>
+        <%= f.text_field :died, class:'form-control' %>
+      </div>
+      <div class='actions'>
+        <%= f.submit 'Edit author', class:"btn btn-primary"%>
+        <%= link_to 'Cancel', library_authors_path, class:"btn btn-primary ml-4" %>
+      </div>
+    <% end %>
   </div>
 </div>
    

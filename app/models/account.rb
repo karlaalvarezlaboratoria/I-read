@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
          omniauth_providers: [:facebook]
+
+  has_many :bookshelves
+
+  after_create :create_bookshelves
 
   def self.from_omniauth(auth)
     where(provider: auth['provider'], uid: auth['uid']).first_or_create do |account|
@@ -14,6 +16,18 @@ class Account < ApplicationRecord
       account.username = auth['info']['username']
       account.name = auth['info']['name']
       account.avatar = auth['info']['image']
+    end
+  end
+
+  private
+
+  def create_bookshelves
+    names = ['Has read', 'Is currently reading', 'Would like to read']
+    names.each do |name|
+      Bookshelf.new(
+        name: name,
+        account_id: id
+      ).save
     end
   end
 end

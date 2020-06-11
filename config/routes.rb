@@ -1,16 +1,17 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root to: 'public#index'
+  get '/home', to: 'home#new' 
+  
+  resources :bookshelves
   namespace :library do
-    get 'publishers/index'
-    get 'publishers/new'
-    get 'publishers/edit'
+    root to: 'books#index'
+    resources :books
+    resources :authors
+    resources :publishers
   end
-  namespace :library do
-    get 'authors/index'
-    get 'authors/new'
-    get 'authors/edit'
-  end
+
   devise_for :accounts, controllers: {
     omniauth_callbacks: 'accounts/omniauth_callbacks',
     sessions: 'accounts/sessions'
@@ -18,15 +19,5 @@ Rails.application.routes.draw do
 
   devise_scope :account do
     post '/sign_up_validation', to: 'accounts/omniauth_callbacks#sign_up_validation'
-  end
-
-  root to: 'public#index'
-  get '/home', to: 'home#new'
-
-  namespace :library do
-    root to: 'books#index'
-    resources :books
-    resources :authors
-    resources :publishers
   end
 end
