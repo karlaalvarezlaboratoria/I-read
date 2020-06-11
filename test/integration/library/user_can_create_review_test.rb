@@ -2,7 +2,7 @@
 
 require 'test_helper'
 
-class UserCanCreateReviewTest < ActionDispatch::IntegrationTest
+class Library::UserCanCreateReviewTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   def setup
@@ -13,23 +13,23 @@ class UserCanCreateReviewTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    get reviews_path
+    get library_book_reviews_path(@book.id)
     assert_response :success
   end
 
   test 'should get new' do
-    get new_review_path
+    get new_library_book_review_path(@book)
     assert_response :success
   end
 
   test 'user can add new review' do
     assert_difference('Review.count') do
-      post reviews_path,
+      post library_book_reviews_path(@book),
            params: {
              review: {
                review_comment: Faker::Lorem.paragraph,
-               rate: 5,
-               book_id: '1'
+               rate: 5
+               #  book_id: '1'
              }
            }
     end
@@ -40,14 +40,14 @@ class UserCanCreateReviewTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get edit' do
-    get edit_review_path(@review)
+    get edit_library_book_review_path(@book, @review)
     assert_response :success
   end
 
   test 'user can update review' do
     new_review = 'Nuevo comentario'
     assert_changes '@review.reload.review_comment' do
-      patch review_path(@review),
+      patch library_book_review_path(@book, @review),
             params: {
               review: {
                 review_comment: new_review
@@ -60,7 +60,7 @@ class UserCanCreateReviewTest < ActionDispatch::IntegrationTest
 
   test 'wrong user cant update review' do
     sign_in accounts(:two)
-    get edit_review_path(@review)
+    get edit_library_book_review_path(@book, @review)
     assert_response :missing
   end
 end
