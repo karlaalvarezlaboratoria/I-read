@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
     <div class="mx-auto"> 
-      <h2>Add Bookshelf</h2>
+      <h2>Edit Bookshelf</h2>
 
       <%= form_for [ @bookshelf ] do |f| %>
         <% if @bookshelf.errors.any? %>
@@ -23,7 +23,7 @@
           <%= f.select :book_ids, Book.all.order(:title).pluck(:title, :id), {}, multiple:true, class:'form-control'%>   
         </div>
         <div class='actions'>
-          <%= f.submit 'Add bookshelf', class:"btn btn-primary"%>
+          <%= f.submit 'Edit bookshelf', class:"btn btn-primary"%>
           <%= link_to 'Cancel', bookshelves_path, class:"btn btn-primary ml-4" %>
         </div>
       <% end %>
