@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/home', to: 'home#new' 
   
   resources :bookshelves
+  resources :reviews
   namespace :library do
     root to: 'books#index'
     resources :books

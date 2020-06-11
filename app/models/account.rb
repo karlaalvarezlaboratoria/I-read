@@ -6,6 +6,8 @@ class Account < ApplicationRecord
          omniauth_providers: [:facebook]
 
   has_many :bookshelves
+  has_many :reviews
+  has_many :books, -> { uniq }, through: :review
 
   after_create :create_bookshelves
 

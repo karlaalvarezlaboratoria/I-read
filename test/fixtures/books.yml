@@ -10,6 +10,7 @@ one:
   length: "200"
   length_type: 1
   isbn: "0000001000002"
+  id: "1"
 
 two:
   title: MyString
@@ -21,3 +22,4 @@ two:
   length: "200"
   length_type: 1
   isbn: "0000003000003"
+  id: "2"
