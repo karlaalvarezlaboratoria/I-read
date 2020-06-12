@@ -1,0 +1,31 @@
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto"> 
+      <h1 class='mb-5'>Reviews</h1>
+    </div>
+  </div>
+    <div class="float-right">
+      <% unless (book.reviews.all.pluck :account_id).include?(current_account.id) %>
+      <%= link_to "Add Review", new_library_book_review_path(book), class: 'btn btn-outline-primary' %> 
+      <% end %>
+    </div>
+  <div class="row row row-cols-1 row-cols-md-3">
+    <h3 class='ml-3 mb-5'><%= book.title %></h3>   
+  </div> 
+
+  <div class="card" style="width: 18rem;">
+    <%= image_tag book.image.thumb.url, class:"card-img-top" %>
+  </div>
+ 
+   <% book.reviews.each do |review| %> 
+    <div class="card-body border">
+      <p>User: <%=Account.find(review.account_id).email%></p>
+      <p>Review: <%=review.review_comment%></p>
+      <p>Rate: <%=review.rate%></p>
+      <% if review.account_id == current_account.id %>
+      <%= link_to "Edit", edit_library_book_review_path(book, review), class:"btn btn-primary" %>
+      <% end %>
+  </div>
+   <% end %> 
+</div>
+

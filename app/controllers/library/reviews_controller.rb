@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Library
-  class ReviewsController < ApplicationController
+  class Library::ReviewsController < ApplicationController
     before_action :authenticate_account!
     before_action :find_review, only: %i[edit update destroy]
 
@@ -16,7 +16,7 @@ module Library
     def show; end
 
     def new
-      @review = Review.new
+      @review = book.reviews.build
     end
 
     def create

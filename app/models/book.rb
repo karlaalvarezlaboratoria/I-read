@@ -9,7 +9,7 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :bookshelves
   belongs_to :publisher
   has_many :reviews
-  has_many :accounts, -> { uniq }, through: :review
+  has_many :accounts, -> { distinct }, through: :review
 
   validates :title, :description, :isbn, presence: true
 
