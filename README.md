@@ -37,7 +37,9 @@ The user stories covered so far are:
 
 ![Reviews1](https://i.ibb.co/Qnx8r7z/Screen-Shot-2020-06-12-at-3-31-53-PM.png)
 
-## ![Reviews comments](https://i.ibb.co/K6FRFJs/Screen-Shot-2020-06-12-at-3-40-33-PM.png)
+![Reviews comments](https://i.ibb.co/K6FRFJs/Screen-Shot-2020-06-12-at-3-40-33-PM.png)
+
+![Search](https://i.ibb.co/9wsMKLN/Screen-Shot-2020-06-12-at-3-52-19-PM.png)
 
 ## Pre-requirements
 
