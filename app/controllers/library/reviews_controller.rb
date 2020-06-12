@@ -62,10 +62,6 @@ module Library
     end
     helper_method :book
 
-    def user_have_review?
-      (current_account.reviews.pluck :book_id).include?(book[:id])
-    end
-
     def user_review
       @review = current_account.reviews.find_by(book_id: book[:id])
     end
