@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Library
-  class Library::ReviewsController < ApplicationController
+  class ReviewsController < ApplicationController
     before_action :authenticate_account!
     before_action :find_review, only: %i[edit update destroy]
 
