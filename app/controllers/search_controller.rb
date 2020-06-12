@@ -3,7 +3,7 @@
 class SearchController < ApplicationController
   def index
     word = "%#{params[:keyword]}%"
-    @search = Book.where('title LIKE ? OR description LIKE ?', word, word)
+    @search = Book.where('title ILIKE ? OR description ILIKE ?', word, word)
 
     respond_with @search
   end
