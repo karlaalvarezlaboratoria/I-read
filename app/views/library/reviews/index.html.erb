@@ -25,7 +25,7 @@
       <% end %>
       <p><%=book.genre%></p>
       <p><%=book.description%></p>
-      <p>Rate: 4.5 </p>
+      <p>Rating: <%= Review.where(book_id: book.id).average(:rate).round(1)%></p>
       <%= link_to "Edit", edit_library_book_path(book), class:"btn btn-primary" %>
     </div>
   </div>
