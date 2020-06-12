@@ -29,14 +29,14 @@ class Library::UserCanCreateReviewTest < ActionDispatch::IntegrationTest
              review: {
                review_comment: Faker::Lorem.paragraph,
                rate: 5
-               #  book_id: '1'
              }
            }
     end
 
-    # created_review = assigns(:review)
+    created_review = assigns(:review)
     follow_redirect!
-    # assert_select 'td', { text: /#{created_bookshelf.name}/ }
+    assert_select 'p', { text: /#{created_review.review_comment}/ }
+    assert_select 'p', { text: /#{created_review.rate}/ }
   end
 
   test 'should get edit' do
@@ -55,7 +55,7 @@ class Library::UserCanCreateReviewTest < ActionDispatch::IntegrationTest
             }
     end
     follow_redirect!
-    # assert_select 'td', { text: /#{new_name}/ }
+    assert_select 'p', { text: /#{new_review}/ }
   end
 
   test 'wrong user cant update review' do
