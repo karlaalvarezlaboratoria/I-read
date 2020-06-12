@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_045054) do
+ActiveRecord::Schema.define(version: 2020_06_11_194137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,32 @@ ActiveRecord::Schema.define(version: 2020_06_10_045054) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["deleted_at"], name: "index_publishers_on_deleted_at"
+  end
+
+  create_table "rate_and_reviews", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "book_id"
+    t.integer "rate"
+    t.text "review"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_rate_and_reviews_on_account_id"
+    t.index ["book_id"], name: "index_rate_and_reviews_on_book_id"
+    t.index ["deleted_at"], name: "index_rate_and_reviews_on_deleted_at"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "book_id"
+    t.integer "rate"
+    t.text "review_comment"
+    t.datetime "deleted_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_reviews_on_account_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id"
+    t.index ["deleted_at"], name: "index_reviews_on_deleted_at"
   end
 
 end

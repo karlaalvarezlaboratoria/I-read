@@ -5,11 +5,9 @@ one:
   country: MyString
   born: "1999"
   died: "1999"
-  id: "1"
 
 two:
   name: MyOtherString
   country: MyString
   born: "1999"
   died: "1999"
-  id: "2"
