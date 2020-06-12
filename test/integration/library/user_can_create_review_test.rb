@@ -6,23 +6,24 @@ class Library::UserCanCreateReviewTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   def setup
-    @account = accounts(:one)
-    sign_in @account
     @book = books(:one)
     @review = reviews(:one)
   end
 
   test 'should get index' do
+    sign_in accounts(:two)
     get library_book_reviews_path(@book.id)
     assert_response :success
   end
 
   test 'should get new' do
+    sign_in accounts(:one)
     get new_library_book_review_path(@book)
     assert_response :success
   end
 
   test 'user can add new review' do
+    sign_in accounts(:one)
     assert_difference('Review.count') do
       post library_book_reviews_path(@book),
            params: {
@@ -40,11 +41,13 @@ class Library::UserCanCreateReviewTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get edit' do
+    sign_in accounts(:two)
     get edit_library_book_review_path(@book, @review)
     assert_response :success
   end
 
   test 'user can update review' do
+    sign_in accounts(:two)
     new_review = 'Nuevo comentario'
     assert_changes '@review.reload.review_comment' do
       patch library_book_review_path(@book, @review),
@@ -59,8 +62,27 @@ class Library::UserCanCreateReviewTest < ActionDispatch::IntegrationTest
   end
 
   test 'wrong user cant update review' do
-    sign_in accounts(:two)
+    sign_in accounts(:one)
     get edit_library_book_review_path(@book, @review)
     assert_response :missing
+  end
+
+  test 'user cant access to create a review for a book already reviewed' do
+    sign_in accounts(:two)
+    get new_library_book_review_path(@book)
+    assert_response :redirect
+  end
+
+  test 'user cant create a review for a book already reviewed' do
+    sign_in accounts(:two)
+    assert_no_difference('Review.count') do
+      post library_book_reviews_path(@book),
+           params: {
+             review: {
+               review_comment: Faker::Lorem.paragraph,
+               rate: 5
+             }
+           }
+    end
   end
 end

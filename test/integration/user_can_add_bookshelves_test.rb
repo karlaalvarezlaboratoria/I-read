@@ -42,7 +42,7 @@ class UserCanAddBookshelvesTest < ActionDispatch::IntegrationTest
   end
 
   test 'user can update bookshelf' do
-    new_name = Faker::Book.title
+    new_name = 'Paz mental'
     assert_changes '@bookshelf.reload.name' do
       patch bookshelf_path(@bookshelf),
             params: {
