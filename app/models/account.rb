@@ -7,7 +7,7 @@ class Account < ApplicationRecord
 
   has_many :bookshelves
   has_many :reviews
-  has_many :books, -> { distinct }, through: :review
+  has_many :books, through: :review
 
   after_create :create_bookshelves
 
