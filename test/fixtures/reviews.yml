@@ -7,11 +7,11 @@
 one:
   review_comment: <%= Faker::Lorem.paragraph %>
   rate: 5
-  account_id: 980190962
-  book_id: "1"
+  account: two
+  book: one
 
 two:
   review_comment: <%= Faker::Lorem.paragraph %>
   rate: 5
-  account_id: 980190962
-  book_id: 2
+  account: two
+  book: two

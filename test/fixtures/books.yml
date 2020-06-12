@@ -3,23 +3,23 @@
 one:
   title: MyString
   genre: 1
-  publisher_id: 2
+  authors: one
+  publisher: two
   release_year: "2000"
   description: Esto debe tener más de veinte carácteres para pasar... Esto es lo que falla?
   format_type: 1
   length: "200"
   length_type: 1
   isbn: "0000001000002"
-  id: "1"
 
 two:
   title: MyString
   genre: 1
-  publisher_id: 1
+  authors: two
+  publisher: one
   release_year: "2000"
   description: <%= Faker::Lorem.paragraph %>
   format_type: 1
   length: "200"
   length_type: 1
   isbn: "0000003000003"
-  id: "2"

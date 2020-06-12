@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  account_id: 980190962
+  account: one
 
 two:
-  name: MyString
-  account_id: 980190962
+  name: MyOtherString
+  account: one
