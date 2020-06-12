@@ -3,9 +3,7 @@
 one:
   name: MyString
   country: MyString
-  id: "1"
 
 two:
   name: MyOtherString
   country: MyString
-  id: "2"

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :bookshelves
   namespace :library do
     root to: 'books#index'
-    resources :books
+    resources :books do
+      resources :reviews
+    end
     resources :authors
     resources :publishers
   end

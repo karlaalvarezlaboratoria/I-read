@@ -17,13 +17,11 @@
               <p class="card-text"><%= name %>.</p>
             <% end %>
             <%= link_to "Edit", edit_library_book_path(book), class:"btn btn-primary" %>
+            <%= link_to "Reviews", library_book_reviews_path(book), class:"btn btn-primary" %>
+
           </div>
         </div>
       </div>
     <% end %>
-</div> 
-
-
-
-  
+  </div> 
 </div>

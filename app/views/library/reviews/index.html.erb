@@ -1,0 +1,46 @@
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto"> 
+      <h1 class='mb-5'>Reviews</h1>
+    </div>
+  </div>
+    <div class="float-right">
+      <% if user_have_review? %> 
+        <%= link_to "Edit Review", new_library_book_review_path(book), class: 'btn btn-outline-primary' %> 
+      <% else %>
+        <%= link_to "Add Review", new_library_book_review_path(book), class: 'btn btn-outline-primary' %> 
+      <% end %>
+    </div>
+  <div>
+    <h4 class='mb-5'><%= book.title %></h4>   
+  </div> 
+  
+  <div class="row">
+    <div class=" card float-left petit-size">
+      <%= image_tag book.image.thumb.url, class:"card-img-top" %>
+    </div>
+    <div class="col float-right ml-4 mb-2 big-size">
+      <% (book.authors.pluck :name).each do |name| %>
+        <p class="card-text"><%= name %>.</p>
+      <% end %>
+      <p><%=book.genre%></p>
+      <p><%=book.description%></p>
+      <p>Rating: <%= Review.where(book_id: book.id).average(:rate).round(1)%></p>
+      <%= link_to "Edit", edit_library_book_path(book), class:"btn btn-primary" %>
+    </div>
+  </div>
+
+  <% book.reviews.each do |review| %> 
+    <div class="row">
+      <div class="card-body border mt-3">
+        <p>User: <%=Account.find(review.account_id).email%></p>
+        <p>Review: <%=review.review_comment%></p>
+        <p>Rate: <%=review.rate%></p>
+        <% if review.account_id == current_account.id %>
+          <%= link_to "Edit", edit_library_book_review_path(book, review), class:"btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %> 
+</div>
+

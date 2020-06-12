@@ -27,9 +27,9 @@ class Library::UserCanAddBooksTest < ActionDispatch::IntegrationTest
            params: {
              book: {
                title: Faker::Book.title,
-               author_ids: ['1'],
+               author_ids: accounts(:one).id,
                genre: 'Art',
-               publisher_id: '1',
+               publisher_id: publishers(:one).id,
                release_year: '2000',
                description: Faker::Lorem.paragraph,
                format_type: 'Printed',
@@ -44,7 +44,6 @@ class Library::UserCanAddBooksTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_select 'h5', { text: /#{created_book.title}/ }
     assert_select 'p', { text: /#{created_book.description}/ }
-    # assert_select 'p', { text: /#{created_book.author}/ }
   end
 
   test 'should get edit' do

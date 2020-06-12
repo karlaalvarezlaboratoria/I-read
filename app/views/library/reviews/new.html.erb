@@ -1,0 +1,32 @@
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto"> 
+      <h2>Add Review</h2>
+
+      <%= form_for [:library, book, @review] do |f| %>
+        <% if @review.errors.any? %>
+          <div id="error_explanation">
+            <ul class="list-unstyled alert alert-warning">
+              <% @review.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class='form-group'>
+          <%= f.label :review %>
+          <%= f.text_area :review_comment, class:'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :rate %>
+          <%= f.select :rate, options_for_select([1, 2, 3, 4, 5]), class:'form-control' %>
+         </div>
+        <div class='actions'>
+          <%= f.submit 'Add review', class:"btn btn-primary"%>
+          <%= link_to 'Cancel', library_books_path, class:"btn btn-primary ml-4" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
