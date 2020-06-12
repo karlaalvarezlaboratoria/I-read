@@ -12,17 +12,20 @@
       <% end %>
     </div>
   <div>
-    <h4 class='ml-3 mb-5'><%= book.title %></h4>   
+    <h4 class='mb-5'><%= book.title %></h4>   
   </div> 
   
   <div class="row">
-    <div class=" card float-left petit-size" style="width: 12rem;">
+    <div class=" card float-left petit-size">
       <%= image_tag book.image.thumb.url, class:"card-img-top" %>
     </div>
-    <div class="col float-right card-body  mb-2" style="width:55rem;">
-      <p><%=book.title%></p>
+    <div class="col float-right ml-4 mb-2 big-size">
+      <% (book.authors.pluck :name).each do |name| %>
+        <p class="card-text"><%= name %>.</p>
+      <% end %>
       <p><%=book.genre%></p>
       <p><%=book.description%></p>
+      <p>Rate: 4.5 </p>
       <%= link_to "Edit", edit_library_book_path(book), class:"btn btn-primary" %>
     </div>
   </div>
