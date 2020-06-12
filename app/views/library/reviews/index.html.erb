@@ -15,26 +15,28 @@
     <h4 class='ml-3 mb-5'><%= book.title %></h4>   
   </div> 
   
-  <div class="card float-left" style="width: 12rem;">
-    <%= image_tag book.image.thumb.url, class:"card-img-top" %>
-  </div>
-   <div class="float-right card-body  mb-2" style="width:55rem;">
+  <div class="row">
+    <div class=" card float-left petit-size" style="width: 12rem;">
+      <%= image_tag book.image.thumb.url, class:"card-img-top" %>
+    </div>
+    <div class="col float-right card-body  mb-2" style="width:55rem;">
       <p><%=book.title%></p>
       <p><%=book.genre%></p>
       <p><%=book.description%></p>
       <%= link_to "Edit", edit_library_book_path(book), class:"btn btn-primary" %>
+    </div>
   </div>
 
-
- 
   <% book.reviews.each do |review| %> 
-    <div class="card-body mt-3" style="width: 35rem;">
-      <p>User: <%=Account.find(review.account_id).email%></p>
-      <p>Review: <%=review.review_comment%></p>
-      <p>Rate: <%=review.rate%></p>
-      <% if review.account_id == current_account.id %>
-        <%= link_to "Edit", edit_library_book_review_path(book, review), class:"btn btn-primary" %>
-      <% end %>
+    <div class="row">
+      <div class="card-body border mt-3">
+        <p>User: <%=Account.find(review.account_id).email%></p>
+        <p>Review: <%=review.review_comment%></p>
+        <p>Rate: <%=review.rate%></p>
+        <% if review.account_id == current_account.id %>
+          <%= link_to "Edit", edit_library_book_review_path(book, review), class:"btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
   <% end %> 
 </div>
