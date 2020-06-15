@@ -3,7 +3,10 @@
 class SearchController < ApplicationController
   def index
     word = "%#{params[:keyword]}%"
-    @search = Book.where('title ILIKE ? OR description ILIKE ?', word, word)
+    books = Book.where('title ILIKE ? OR description ILIKE ?', word, word)
+    author = Author.find_by('name ILIKE ?', word)
+
+    @search = author ? books + author.books : books
 
     respond_with @search
   end
@@ -11,4 +14,8 @@ class SearchController < ApplicationController
   def show; end
 
   def create; end
+
+  def authors?(word)
+    return true if Author.find_by('name ILIKE ?', word)
+  end
 end
