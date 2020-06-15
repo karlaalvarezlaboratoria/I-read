@@ -4,13 +4,14 @@ module Library
   class ReviewsController < ApplicationController
     before_action :authenticate_account!
     before_action :find_review, only: %i[edit update destroy]
-    # before_action :user_review, only: %i[edit]
 
     rescue_from 'ActiveRecord::RecordNotFound' do |exception|
       render html: exception, status: 404
     end
 
     def index
+      @book_have_review = book.reviews.average(:rate)
+      @average = @book_have_review ? book.reviews.average(:rate).round(1) : nil
       @reviews = book.reviews
     end
 
