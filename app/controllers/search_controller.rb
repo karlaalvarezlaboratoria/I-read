@@ -10,12 +10,4 @@ class SearchController < ApplicationController
 
     respond_with @search
   end
-
-  def show; end
-
-  def create; end
-
-  def authors?(word)
-    return true if Author.find_by('name ILIKE ?', word)
-  end
 end

@@ -2,21 +2,22 @@
   <div class='row'>
     <div class="mx-auto"> 
       <h1 class='mb-5'>Search</h1>
-   </div>
+    </div>
   </div>
-<% @search.each do |book| %>
-<div class="mb-4">
-  <div class="float-left">
-    <%= image_tag book.image.thumb.url, class:"card-img-top float-left" %>
-  
- </div>
-  <div class="float-right card-body border mb-2" style="width:55rem;">
-      <p><%=book.title%></p>
-      <p><%=book.genre%></p>
-      <p><%=book.description%></p>
-      <%= link_to "Edit", edit_library_book_path(book), class:"btn btn-primary" %>
-  </div>
-</div>
- 
-<% end %>
+  <% if @search.empty? %>
+    <h5> Not matches found </h5>
+  <% end %>
+  <% @search.each do |book| %>
+    <div class="mb-4">
+      <div class="float-left">
+        <%= image_tag book.image.thumb.url, class:"card-img-top float-left" %>
+      </div>
+      <div class="float-right card-body border mb-2" style="width:55rem;">
+        <p><%=book.title%></p>
+        <p><%=book.genre%></p>
+        <p><%=book.description%></p>
+        <%= link_to "Edit", edit_library_book_path(book), class:"btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
 </div>
