@@ -11,7 +11,6 @@ module Library
 
     def index
       @book_review_average = book.reviews.average(:rate)
-      @average = @book_review_average ? @book_review_average.round(1) : nil
       @reviews = book.reviews
     end
 

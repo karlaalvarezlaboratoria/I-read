@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 module ReviewsHelper
-  def average
-    if @book_review_average
-      @average
+  def average(value)
+    if value
+      value.round(1)
     else
       'N/A'
     end

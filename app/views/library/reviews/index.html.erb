@@ -25,7 +25,7 @@
       <% end %>
       <p><%=book.genre%></p>
       <p><%=book.description%></p>
-      <p>Rating: <%= average %></p>     
+      <p>Rating: <%= average(@book_review_average) %></p>     
       <%= link_to "Edit", edit_library_book_path(book), class:"btn btn-primary" %>
     </div>
   </div>
