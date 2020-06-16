@@ -5,7 +5,9 @@ class SearchController < ApplicationController
     word = "%#{params[:keyword]}%"
     books = Book.where('title ILIKE ? OR description ILIKE ?', word, word)
     author = Author.find_by('name ILIKE ?', word)
-    @search = author ? books + author.books : books
+    books_founded = author ? books + author.books : books
+
+    @search = books_founded ? books_founded.uniq : books_founded
 
     respond_with @search
   end
