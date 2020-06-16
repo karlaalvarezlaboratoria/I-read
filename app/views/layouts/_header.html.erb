@@ -2,6 +2,7 @@
   <div class='row'>
     <div class='col-12 pb-3 pt-3 border-bottom' >
       <div class='float-right'>
+
         <% if account_signed_in? %>
           <%= link_to 'Log Out', destroy_account_session_path, method: :delete, class: 'btn btn-outline-primary' %>
         <% else%>
@@ -9,48 +10,46 @@
           <%= link_to 'Sing Up', new_account_registration_path, class: 'btn btn-outline-primary' %>
         <% end %>
       </div>
+
       <h1>I Read</h1>
     </div>
+
     <% if account_signed_in? %>
-    <nav class="navbar mb-5 col-12">
-      <%= link_to 'Home', home_path, class:"nav-link" %>
-      <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Library
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'Library', library_books_path, class:"dropdown-item" %>
-          <%= link_to 'Authors', library_authors_path, class:"dropdown-item" %>
-          <%= link_to 'Publisher', library_publishers_path, class:"dropdown-item" %>
-          <div class="dropdown-divider"></div>
-          <%= link_to 'Add Book', new_library_book_path, class:"dropdown-item" %>
-          <%= link_to 'Add Author', new_library_author_path, class:"dropdown-item" %>
-          <%= link_to 'Add Publisher', new_library_publisher_path, class:"dropdown-item" %>
+      <nav class="navbar mb-5 col-12">
+        <%= link_to 'Home', home_path, class:"nav-link" %>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Library
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'Library', library_books_path, class:"dropdown-item" %>
+            <%= link_to 'Authors', library_authors_path, class:"dropdown-item" %>
+            <%= link_to 'Publisher', library_publishers_path, class:"dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Add Book', new_library_book_path, class:"dropdown-item" %>
+            <%= link_to 'Add Author', new_library_author_path, class:"dropdown-item" %>
+            <%= link_to 'Add Publisher', new_library_publisher_path, class:"dropdown-item" %>
+          </div>
         </div>
-      </div>
-      <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            My bookshelves
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'My bookshelves', bookshelves_path, class:"dropdown-item" %>
-          <% current_account.bookshelves.each do |bookshelf| %>
-            <%= link_to bookshelf.name, bookshelf_path(bookshelf), class:"dropdown-item" %>
-          <% end %>
-          <div class="dropdown-divider"></div>
-          <%= link_to 'Add Bookshelf', new_bookshelf_path, class:"dropdown-item" %>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              My bookshelves
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to 'My bookshelves', bookshelves_path, class:"dropdown-item" %>
+            <% current_account.bookshelves.each do |bookshelf| %>
+              <%= link_to bookshelf.name, bookshelf_path(bookshelf), class:"dropdown-item" %>
+            <% end %>
+            <div class="dropdown-divider"></div>
+            <%= link_to 'Add Bookshelf', new_bookshelf_path, class:"dropdown-item" %>
+          </div>
         </div>
-      </div>
-      
-      <%# <%= form_for '/search', class:"form-inline my-2 my-lg-0" do |f| %> 
-      <%= form_tag '/search', method: :get, class:"form-inline my-2 my-lg-0"  do |f| %>
-        <%= text_field_tag :keyword, nil, placeholder: "Search", class:"form-control mr-sm-2" %>
-      <%# <form class="form-inline my-2 my-lg-0"> %>
-        <%# <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> %>
-        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-      <%# </form> %>
-      <% end %>
-    </nav>
+        
+        <%= form_tag '/search', method: :get, class:"form-inline my-2 my-lg-0"  do |f| %>
+          <%= text_field_tag :keyword, nil, placeholder: "Search", class:"form-control mr-sm-2" %>
+          <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        <% end %>
+      </nav>
     <% end %>
   </div>
 </div>
