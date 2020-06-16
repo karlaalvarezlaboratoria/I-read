@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../app/helpers/reviews_helper'
+require 'test_helper'
 
 class Reviews < ActionView::TestCase
   test 'valid average input' do
