@@ -1,0 +1,16 @@
+<div class='container'>
+  <div class='row'>
+    <div class="mx-auto"> 
+      <h1 class='mb-5'>Profile</h1>
+    </div>
+  </div>
+  <div class="row">
+    <%= image_tag @account.avatar.thumb.url, class:'rounded-circle medium-size mr-5' %>
+    <div class="ml-5 mt-5 pt-3">
+      <p><strong> Username: </strong> <%= @account.username %> </p>
+      <p><strong> Name: </strong> <%= @account.name %> </p>
+      <p><strong> Email: </strong> <%= @account.email %> </p>
+      <%= link_to "Edit profile", edit_account_registration_path(current_account), class:"btn btn-primary mt-5"%>
+    </div>
+  </div>
+</div>

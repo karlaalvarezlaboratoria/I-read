@@ -3,6 +3,8 @@
     <div class='col-12 pb-3 pt-3 border-bottom' >
       <div class='float-right'>
         <% if account_signed_in? %>
+          <%= image_tag current_account.avatar.thumb.url, class:'rounded-circle ultra-petit-size mr-2' %>
+          <%= link_to profile, profiles_path(current_account), class:'mr-2'%> 
           <%= link_to 'Log Out', destroy_account_session_path, method: :delete, class: 'btn btn-outline-primary' %>
         <% else%>
           <%= link_to 'Log In', new_account_session_path, class: 'btn btn-outline-primary' %>

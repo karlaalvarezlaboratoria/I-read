@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ImageUploader < CarrierWave::Uploader::Base
+class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -18,7 +18,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*_args)
     #   # For Rails 3.1+ asset pipeline compatibility:
-    ActionController::Base.helpers.asset_path('default.png')
+    ActionController::Base.helpers.asset_path('perfil_icono.png')
     #
     #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   end
@@ -31,11 +31,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :medium do
-    process resize_to_fill: [850, 850]
-  end
   version :thumb do
     process resize_to_fill: [1000, 1000]
+  end
+
+  version :medium do
+    process resize_to_fill: [300, 300]
+  end
+
+  version :small do
+    process resize_to_fill: [140, 140]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.

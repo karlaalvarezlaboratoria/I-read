@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Account < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
          omniauth_providers: [:facebook]
