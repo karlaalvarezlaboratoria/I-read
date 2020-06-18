@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_194137) do
+ActiveRecord::Schema.define(version: 2020_06_18_003710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,10 @@ ActiveRecord::Schema.define(version: 2020_06_11_194137) do
     t.string "username", default: "", null: false
     t.string "name"
     t.string "avatar"
+    t.string "slug"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_accounts_on_slug", unique: true
   end
 
   create_table "authors", force: :cascade do |t|
@@ -84,6 +86,17 @@ ActiveRecord::Schema.define(version: 2020_06_11_194137) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_bookshelves_on_account_id"
     t.index ["deleted_at"], name: "index_bookshelves_on_deleted_at"
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "publishers", force: :cascade do |t|

@@ -6,6 +6,9 @@ class Account < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauthable,
          omniauth_providers: [:facebook]
 
+  extend FriendlyId
+  friendly_id :username, use: %i[slugged history]
+
   has_many :bookshelves
   has_many :reviews
   has_many :books, through: :review

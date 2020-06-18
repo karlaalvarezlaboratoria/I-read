@@ -6,5 +6,6 @@ class ProfilesController < ApplicationController
 
   def find_account
     @account = current_account
+    # Accounts.friendly.find(params[:id])
   end
 end
