@@ -2,6 +2,6 @@
 
 module ApplicationHelper
   def profile
-    current_account.username || current_account.email
+    current_account.username
   end
 end

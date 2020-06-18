@@ -12,7 +12,7 @@ TEST_PASSWORD = 'qwe123qwe'
 account = Account.create!(
   email: 'karly@test.com',
   name: 'Karla Alvarez',
-  username: "Karli bb <3",
+  username: "Karli bb",
   password: TEST_PASSWORD
 )
 

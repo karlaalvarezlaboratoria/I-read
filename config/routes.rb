@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'public#index'
   get '/home', to: 'home#new' 
   
-  resources :profiles, :path => "profile/:id"
+  resources :profiles , :path => "profile/:id"
   resources :bookshelves
   namespace :library do
     root to: 'books#index'

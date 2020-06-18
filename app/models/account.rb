@@ -2,12 +2,16 @@
 
 class Account < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable,
-         omniauth_providers: [:facebook]
+
+  validates :name, :username, presence: true
+  validates :username, uniqueness: true
 
   extend FriendlyId
   friendly_id :username, use: %i[slugged history]
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable, :omniauthable,
+         omniauth_providers: [:facebook]
 
   has_many :bookshelves
   has_many :reviews
