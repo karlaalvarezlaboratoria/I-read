@@ -7,10 +7,11 @@
 one:
   email: user@example.com
   encrypted_password: <%= Account.new.send(:password_digest, 'secret') %>
-  # bookshelves: [980190962]
-# column: value
-#
+  name: <%= Faker::Name.name %>
+  username: <%= Faker::Lorem.unique.word %>
+
 two:
   email: other@example.com
   encrypted_password: <%= Account.new.send(:password_digest, 'secret') %>
-# column: value
+  name: <%= Faker::Name.name %>
+  username: <%= Faker::Lorem.unique.word %>

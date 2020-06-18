@@ -15,7 +15,16 @@ class UserCanCreateAnAccountTest < ActionDispatch::IntegrationTest
 
   test 'should create account' do
     assert_difference('Account.count') do
-      post account_registration_path, params: { account: { email: 'otro@example.com', password: 'secret', password_confirmation: 'secret' } }
+      post account_registration_path,
+           params: {
+             account: {
+               email: 'otro@example.com',
+               password: 'secret',
+               password_confirmation: 'secret',
+               name: Faker::Name.name,
+               username: Faker::Lorem.unique.word
+             }
+           }
     end
 
     assert_redirected_to home_path
