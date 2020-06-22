@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_06_19_191212) do
-=======
-ActiveRecord::Schema.define(version: 2020_06_15_172130) do
->>>>>>> master
+ActiveRecord::Schema.define(version: 2020_06_18_003710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,20 +99,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_172130) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
-  create_table "progresses", force: :cascade do |t|
-    t.bigint "account_id"
-    t.bigint "book_id"
-    t.bigint "bookshelf_id"
-    t.integer "book_progress"
-    t.datetime "deleted_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_progresses_on_account_id"
-    t.index ["book_id"], name: "index_progresses_on_book_id"
-    t.index ["bookshelf_id"], name: "index_progresses_on_bookshelf_id"
-    t.index ["deleted_at"], name: "index_progresses_on_deleted_at"
-  end
-
   create_table "publishers", force: :cascade do |t|
     t.string "name"
     t.string "country"
@@ -124,19 +106,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_172130) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["deleted_at"], name: "index_publishers_on_deleted_at"
-  end
-
-  create_table "rate_and_reviews", force: :cascade do |t|
-    t.bigint "account_id"
-    t.bigint "book_id"
-    t.integer "rate"
-    t.text "review"
-    t.datetime "deleted_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_rate_and_reviews_on_account_id"
-    t.index ["book_id"], name: "index_rate_and_reviews_on_book_id"
-    t.index ["deleted_at"], name: "index_rate_and_reviews_on_deleted_at"
   end
 
   create_table "reviews", force: :cascade do |t|

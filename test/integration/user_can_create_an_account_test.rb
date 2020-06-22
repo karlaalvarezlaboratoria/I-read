@@ -36,10 +36,18 @@ class UserCanCreateAnAccountTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should update account' do
+  test 'user can update his profile' do
     sign_in @account
-    patch account_registration_path(id: @account), params: { email: @account.email, password: @account.encrypted_password, username: 'actual username', name: 'New name' }
-    assert_response :success
+    assert_changes '@account.reload.name' do
+      patch account_registration_path(id: @account),
+            params: { account: {
+              email: @account.email,
+              username: 'actual username',
+              name: 'New name'
+            } }
+    end
+    follow_redirect!
+    assert_select 'p', { text: /New name/ }
   end
 
   test 'should destroy account' do

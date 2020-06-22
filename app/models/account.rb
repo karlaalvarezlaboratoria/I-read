@@ -12,6 +12,7 @@ class Account < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
          omniauth_providers: [:facebook]
+  attr_accessor :current_password
 
   has_many :bookshelves
   has_many :reviews
