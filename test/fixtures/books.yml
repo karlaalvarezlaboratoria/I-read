@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: MyFirstBook
   genre: 1
   authors: one
   publisher: two
@@ -13,7 +13,7 @@ one:
   isbn: "0000001000002"
 
 two:
-  title: MyString
+  title: MySecondBook
   genre: 1
   authors: two
   publisher: one

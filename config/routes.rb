@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/home', to: 'home#new' 
   
   resources :profiles , :path => "profile/:id"
+  resources :search
   resources :bookshelves
   namespace :library do
     root to: 'books#index'
