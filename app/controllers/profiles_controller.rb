@@ -5,6 +5,9 @@ class ProfilesController < ApplicationController
   before_action :find_account
 
   def find_account
-    @account = Account.friendly.find(params[:id])
+    byebug
+    @account = Account.find_by_username(params[:id])
+    # @account = Account.find(params[:username])
+    # @account = Account.find_by(username: params[:id])
   end
 end

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: 'public#index'
   get '/home', to: 'home#new' 
   
-  resources :profiles , :path => "profile/:id"
+  resources :profiles , :key => :username
   resources :search
   resources :bookshelves
   namespace :library do
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :publishers
   end
 
-  devise_for :accounts, controllers: {
+  devise_for :accounts, :key => :username, controllers: {
     registrations: "accounts/registrations",
     omniauth_callbacks: 'accounts/omniauth_callbacks',
     sessions: 'accounts/sessions'

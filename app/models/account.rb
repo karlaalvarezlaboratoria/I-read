@@ -6,8 +6,8 @@ class Account < ApplicationRecord
   validates :name, :username, presence: true
   validates :username, uniqueness: true
 
-  extend FriendlyId
-  friendly_id :username, use: %i[slugged history]
+  # extend FriendlyId
+  # friendly_id :username, use: %i[slugged history]
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable,
@@ -19,6 +19,12 @@ class Account < ApplicationRecord
   has_many :books, through: :review
 
   after_create :create_bookshelves
+  after_create :update_slug
+  before_update :assign_slug
+
+  def to_param
+    username
+  end
 
   def self.from_omniauth(auth)
     where(provider: auth['provider'], uid: auth['uid']).first_or_create do |account|
